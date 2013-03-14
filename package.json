@@ -1,0 +1,39 @@
+{
+  "name": "ssh-keygen",
+  "version": "0.1.0",
+  "author": {
+  	"name": "Eric Vicenti",
+  	"url": "http://github.com/ericvicenti"
+  },
+  "homepage": "http://github.com/ericvicenti/ssh-keygen",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ericvicenti/ssh-keygen.git"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "keywords": [
+  	"ssl",
+    "ssh",
+  	"openssl",
+  	"key",
+    "pair",
+  	"private",
+    "public"
+  ],
+  "bugs": {
+    "url": "http://github.com/ericvicenti/ssh-keygen/issues"
+  },
+  "main": "src/ssh-keygen",
+  "description": "Generates SSH key-pairs",
+  "dependencies": {
+      "underscore": "1.4.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ericvicenti/ssh-keygen/blob/master/LICENSE.md"
+    }
+  ]
+}
