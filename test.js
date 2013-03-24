@@ -1,7 +1,13 @@
 var keygen = require('./src/ssh-keygen');
 
 console.log('Generating key pair')
-keygen(__dirname + '/foobar_rsa', 'john@doe.com', 'keyPassword', function(err){
-	if(err) console.log('There was a problem');
-	else console.log('Done generating key pairs in '+__dirname);
+
+keygen({
+  comment: 'john@doe.com',
+  read: true
+}, function(err, out){
+	if(err) return console.log('There was a problem : '+err);
+  console.log('Done generating key pairs');
+  console.log(out.key)
+  console.log(out.pubKey)
 });

@@ -24,15 +24,16 @@ var location = __dirname + '/foo_rsa';
 var comment = 'joe@foobar.com';
 var password = 'keypassword'; // false and undefined will convert to an empty pw
 
-keygen(location, comment, {
-	password: password
-}, function(err){
-	if(err) return console.log('Something went wrong!');
-	console.log('Keys created!')
-	var private = fs.readFileSync( location );
-	var public = fs.readFileSync( location + '.pub');
-	console.log('private key: '+private);
-	console.log('public key: '+public);
+keygen({
+  location: location,
+  comment: comment,
+	password: password,
+  read: true
+}, function(err, out){
+	if(err) return console.log('Something went wrong: '+err);
+	console.log('Keys created!');
+	console.log('private key: '+out.key);
+	console.log('public key: '+out.pubKey);
 });
 
 ```
@@ -59,6 +60,15 @@ The key's randomart image is:
 |                 |
 +-----------------+
 ```
+
+### Parameters
+
+* location, desired location for the key. The public key will be at the location + `.pub`
+* read, should the callback have the key files read into it, defaults true
+* force, destroy pre-existing files with the location name and the public key name, defaults true
+* destroy, destroy the key files once they have been read
+* comment, the comment that should be embedded into the key
+* password, the password for the key, defaults empty
 
 ### Note
 
