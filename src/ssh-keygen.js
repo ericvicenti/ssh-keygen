@@ -2,6 +2,7 @@ var spawn = require('child_process').spawn;
 var _ = require('underscore');
 var fs = require('fs');
 var os = require('os');
+var path = require('path');
 
 var log = function(a){
 	if(process.env.VERBOSE) console.log('ssh-keygen: '+a);
@@ -94,7 +95,7 @@ function ssh_keygen(location, opts, callback){
 
 module.exports = function(opts, callback){
 	var location = opts.location;
-	if(!location) location = os.tmpDir()+'id_rsa';
+	if(!location) location = path.join(os.tmpDir(),'id_rsa');
 
 	if(_.isUndefined(opts.read)) opts.read = true;
 	if(_.isUndefined(opts.force)) opts.force = true;
