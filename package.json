@@ -1,6 +1,6 @@
 {
   "name": "ssh-keygen",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
   	"name": "Eric Vicenti",
   	"url": "http://github.com/ericvicenti"
@@ -14,12 +14,10 @@
     "node": ">= 0.6.0"
   },
   "keywords": [
-  	"ssl",
     "ssh",
-  	"openssl",
-  	"key",
+    "key",
     "pair",
-  	"private",
+    "private",
     "public"
   ],
   "bugs": {
