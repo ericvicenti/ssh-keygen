@@ -63,11 +63,11 @@ The key's randomart image is:
 
 ### Parameters
 
-* location, desired location for the key. The public key will be at the location + `.pub`
+* location, desired location for the key. The public key will be at the location + `.pub`, defaults temp dir
 * read, should the callback have the key files read into it, defaults true
 * force, destroy pre-existing files with the location name and the public key name, defaults true
-* destroy, destroy the key files once they have been read
-* comment, the comment that should be embedded into the key
+* destroy, destroy the key files once they have been read, defaults false
+* comment, the comment that should be embedded into the key, defaults empty
 * password, the password for the key, defaults empty
 
 ### Note
