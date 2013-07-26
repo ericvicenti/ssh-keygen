@@ -64,7 +64,7 @@ function ssh_keygen(location, opts, callback){
 		log('exited');
 		if(read){
 			log('reading key '+location);
-			fs.readFile(location, {encoding: 'utf8'}, function(err, key){			
+			fs.readFile(location, 'utf8', function(err, key){			
 				if(destroy){
 					log('destroying key '+location);
 					fs.unlink(location, function(err){
@@ -74,7 +74,7 @@ function ssh_keygen(location, opts, callback){
 				} else readPubKey();
 				function readPubKey(){
 					log('reading pub key '+pubLocation);
-					fs.readFile(pubLocation, {encoding: 'utf8'}, function(err, pubKey){
+					fs.readFile(pubLocation, 'utf8', function(err, pubKey){
 						if(destroy){
 							log('destroying pub key '+pubLocation);
 							fs.unlink(pubLocation, function(err){
