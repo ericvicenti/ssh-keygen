@@ -7,6 +7,16 @@ var path = require('path');
 var log = function(a){
 	if(process.env.VERBOSE) console.log('ssh-keygen: '+a);
 }
+function binPath() {
+	if(process.platform !== 'win32') return 'ssh-keygen';
+
+	switch(process.arch) {
+		case 'ia32': return path.join(__dirname, '..', 'bin', 'ssh-keygen-32.exe');
+		case 'x64': return path.join(__dirname, '..', 'bin', 'ssh-keygen-64.exe');
+	}
+
+	throw new Error('Unsupported platform');
+}
 function checkAvailability(location, force, callback){
 	var pubLocation = location+'.pub';
 	log('checking availability: '+location);
@@ -20,7 +30,7 @@ function checkAvailability(location, force, callback){
 		if(!force && keyExists) return callback(location+' already exists');
 		if(!force && pubKeyExists) return callback(pubLocation+' already exists');
 		if(!keyExists && !pubKeyExists) return callback();
-		if(keyExists){ 
+		if(keyExists){
 			log('removing '+location);
 			fs.unlink(location, function(err){
 				if(err) return callback(err);
@@ -45,7 +55,7 @@ function ssh_keygen(location, opts, callback){
 	if(!opts.comment) opts.comment = '';
 	if(!opts.password) opts.password = '';
 
-	var keygen = spawn('ssh-keygen', [
+	var keygen = spawn(binPath(), [
 		'-t','rsa',
 		'-b','2048',
 		'-C', opts.comment,
@@ -64,7 +74,7 @@ function ssh_keygen(location, opts, callback){
 		log('exited');
 		if(read){
 			log('reading key '+location);
-			fs.readFile(location, 'utf8', function(err, key){			
+			fs.readFile(location, 'utf8', function(err, key){
 				if(destroy){
 					log('destroying key '+location);
 					fs.unlink(location, function(err){

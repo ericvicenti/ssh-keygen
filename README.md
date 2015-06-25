@@ -78,6 +78,10 @@ It is advisable to generate your keys on a machine with a significant random sou
 
 ssh-keygen is [open source](https://github.com/ericvicenti/ssh-keygen/blob/master/LICENSE.md) under the MIT license
 
+### Windows
+
+This package bundles binaries for windows. The current version is: `2.4.4.2-rc3`
+
 ### Todo
 
 * Real tests
