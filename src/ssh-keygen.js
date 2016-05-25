@@ -44,10 +44,12 @@ function ssh_keygen(location, opts, callback){
 	var pubLocation = location+'.pub';
 	if(!opts.comment) opts.comment = '';
 	if(!opts.password) opts.password = '';
+	if(!opts.password) opts.password = '';
+	if(!opts.size) opts.size = '2048';
 
 	var keygen = spawn('ssh-keygen', [
 		'-t','rsa',
-		'-b','2048',
+		'-b', opts.size,
 		'-C', opts.comment,
 		'-N', opts.password,
 		'-f', location
@@ -58,7 +60,7 @@ function ssh_keygen(location, opts, callback){
 	});
 
 	var read = opts.read;
-	var destroy = opts.destroy;
+	var destroy = opts.destroy || false;
 
 	keygen.on('exit',function(){
 		log('exited');
@@ -99,7 +101,7 @@ module.exports = function(opts, callback){
 
 	if(_.isUndefined(opts.read)) opts.read = true;
 	if(_.isUndefined(opts.force)) opts.force = true;
-	if(_.isUndefined(opts.destroy)) opts.destroy = true;
+	if(_.isUndefined(opts.destroy)) opts.destroy = false;
 
 	checkAvailability(location, opts.force, function(err){
 		if(err){
