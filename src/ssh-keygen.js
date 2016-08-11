@@ -109,7 +109,7 @@ module.exports = function(opts, callback){
 
 	if(_.isUndefined(opts.read)) opts.read = true;
 	if(_.isUndefined(opts.force)) opts.force = true;
-	if(_.isUndefined(opts.destroy)) opts.destroy = true;
+	if(_.isUndefined(opts.destroy)) opts.destroy = false;
 
 	checkAvailability(location, opts.force, function(err){
 		if(err){
