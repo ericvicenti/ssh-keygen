@@ -16,7 +16,7 @@ OR download from github and place in ./node_modules
 
 
 
-```
+```js
 var keygen = require('ssh-keygen');
 var fs = require('fs');
 
