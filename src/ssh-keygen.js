@@ -112,7 +112,7 @@ function ssh_keygen(location, opts, callback){
 
 module.exports = function(opts, callback){
 	var location = opts.location;
-	if(!location) location = path.join(os.tmpDir(),'id_rsa');
+	if(!location) location = path.join(os.tmpdir(),'id_rsa');
 
 	if(_.isUndefined(opts.read)) opts.read = true;
 	if(_.isUndefined(opts.force)) opts.force = true;

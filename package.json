@@ -1,6 +1,6 @@
 {
   "name": "ssh-keygen",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": {
   	"name": "Eric Vicenti",
   	"url": "http://github.com/ericvicenti"
@@ -26,7 +26,7 @@
   "main": "src/ssh-keygen",
   "description": "Generates SSH key-pairs",
   "dependencies": {
-      "underscore": "1.4.x"
+    "underscore": "1.4.x"
   },
   "licenses": [
     {
