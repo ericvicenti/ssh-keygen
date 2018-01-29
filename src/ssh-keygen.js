@@ -91,9 +91,9 @@ function ssh_keygen(location, opts, callback){
 							fs.unlink(pubLocation, function(err){
 								if(err) return callback(err);
 								key = key.toString();
-								key = key.substring(0, key.lastIndexOf(" \n"));
+								key = key.substring(0, key.lastIndexOf("\n")).trim();
 								pubKey = pubKey.toString();
-								pubKey = pubKey.substring(0, pubKey.lastIndexOf(" \n"));
+								pubKey = pubKey.substring(0, pubKey.lastIndexOf("\n")).trim();
 								return callback(undefined, {
 									key: key, pubKey: pubKey
 								});
