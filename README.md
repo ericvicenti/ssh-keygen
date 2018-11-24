@@ -15,7 +15,6 @@ OR download from github and place in ./node_modules
 ### Usage
 
 
-
 ```js
 var keygen = require('ssh-keygen');
 var fs = require('fs');
@@ -69,6 +68,8 @@ The key's randomart image is:
 * destroy, destroy the key files once they have been read, defaults false
 * comment, the comment that should be embedded into the key, defaults empty
 * password, the password for the key, defaults empty
+* encryption, Supports all other encrytpions by default rsa
+* size , the bit size for the encryption, by default the recommended size for the encryption specified
 
 ### Note
 
