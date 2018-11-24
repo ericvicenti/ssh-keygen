@@ -53,11 +53,30 @@ function ssh_keygen(location, opts, callback){
 
 	var pubLocation = location+'.pub';
 	if(!opts.comment) opts.comment = '';
+	if(!opts.encryption) opts.encryption='rsa';
 	if(!opts.password) opts.password = '';
-	if(!opts.size) opts.size = '2048';
+	if(!opts.size) {
+		switch(opts.encryption){
+		   case 'rsa': 	opts.size = '2048';break;
+		   case 'dsa': 	opts.size = '1024';break;
+		   case 'ecdsa': opts.size = '256';break;
+		   case 'ed25519': opts.size = '256';break;
+		   default: opts.size='2048';opts.encryption='rsa';
+		}
+	}
+	else{
+		switch(opts.encryption){
+		   case 'rsa': 	if (!(['1024','2048'].indexOf(opts.size)>=0)) opts.size = '2048';break;
+		   case 'dsa': 	if (!(['1024'].indexOf(opts.size)>=0)) opts.size = '1024';break;
+		   case 'ecdsa': if (!(['256','384','521'].indexOf(opts.size)>=0))  opts.size = '521'; break;
+		   case 'ed25519':if (!(['256'].indexOf(opts.size)>=0)) opts.size = '256';break;
+		   default: opts.size='2048'; opts.encryption='rsa';
+		}	
+	}
+
 
 	var keygen = spawn(binPath(), [
-		'-t','rsa',
+		'-t', opts.encryption,
 		'-b', opts.size,
 		'-C', opts.comment,
 		'-N', opts.password,
