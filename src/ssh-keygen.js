@@ -55,13 +55,15 @@ function ssh_keygen(location, opts, callback){
 	if(!opts.comment) opts.comment = '';
 	if(!opts.password) opts.password = '';
 	if(!opts.size) opts.size = '2048';
+	if(!opts.format) opts.format = 'PEM';
 
 	var keygen = spawn(binPath(), [
 		'-t','rsa',
 		'-b', opts.size,
 		'-C', opts.comment,
 		'-N', opts.password,
-		'-f', location
+		'-f', location,
+		'-m', opts.format
 	]);
 
 	keygen.stdout.on('data', function(a){
