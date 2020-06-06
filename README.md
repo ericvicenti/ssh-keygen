@@ -23,12 +23,14 @@ var fs = require('fs');
 var location = __dirname + '/foo_rsa';
 var comment = 'joe@foobar.com';
 var password = 'keypassword'; // false and undefined will convert to an empty pw
+var format = 'PEM'; // default is PEM
 
 keygen({
   location: location,
   comment: comment,
-	password: password,
-  read: true
+  password: password,
+  read: true,
+  format: format
 }, function(err, out){
 	if(err) return console.log('Something went wrong: '+err);
 	console.log('Keys created!');
@@ -41,7 +43,7 @@ keygen({
 The following shell command will get executed:
 
 ```
-$ ssh-keygen -t rsa -b 2048 -C "joe@foobar.com" -N "keypassword" -f ./foo_rsa
+$ ssh-keygen -t rsa -b 2048 -C "joe@foobar.com" -N "keypassword" -m PEM -f ./foo_rsa
 Generating public/private rsa key pair.
 Your identification has been saved in ./foo_rsa.
 Your public key has been saved in ./foo_rsa.pub.
