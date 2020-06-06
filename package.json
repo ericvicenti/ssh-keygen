@@ -1,6 +1,6 @@
 {
   "name": "ssh-keygen",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "author": {
     "name": "Eric Vicenti",
     "url": "http://github.com/ericvicenti"
