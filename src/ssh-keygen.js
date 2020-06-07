@@ -11,8 +11,8 @@ function binPath() {
 	if(process.platform !== 'win32') return 'ssh-keygen';
 
 	switch(process.arch) {
-		case 'ia32': return path.join(__dirname, '..', 'bin', 'ssh-keygen-32.exe');
-		case 'x64': return path.join(__dirname, '..', 'bin', 'ssh-keygen-64.exe');
+		case 'ia32': return path.join(__dirname, '..', 'bin','32', 'ssh-keygen.exe');
+		case 'x64': return path.join(__dirname, '..', 'bin', '64', 'ssh-keygen.exe');
 	}
 
 	throw new Error('Unsupported platform');
