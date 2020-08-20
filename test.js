@@ -11,3 +11,18 @@ keygen({
   console.log(out.key)
   console.log(out.pubKey)
 });
+
+
+var keygenPromise = require('./src/ssh-keygen').keygenPromise;
+ 
+keygenPromise({
+  comment: 'promise@doe.com',
+  read: true
+}).then(out=>{
+  console.log('Done generating key pairs');
+  console.log(out.key)
+  console.log(out.pubKey)
+}).catch(err=>{
+  console.log('There was a problem : '+err);
+});
+

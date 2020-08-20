@@ -126,3 +126,26 @@ module.exports = function(opts, callback){
 		ssh_keygen(location, opts, callback);
 	});
 };
+
+module.exports.keygenPromise = function(opts, callback){
+	return new Promise((resolve , reject) => {
+		var location = opts.location;
+		if(!location) location = path.join(os.tmpdir(),'id_rsa');
+
+		if(_.isUndefined(opts.read)) opts.read = true;
+		if(_.isUndefined(opts.force)) opts.force = true;
+		if(_.isUndefined(opts.destroy)) opts.destroy = false;
+
+		checkAvailability(location, opts.force, function(err){
+			if(err){
+				log('availability err '+err);
+				reject(err)
+			}
+			ssh_keygen(location, opts, (err, out)=>{
+				if(err)reject(err)
+				resolve(out)
+			});
+		});
+	})
+};
+
