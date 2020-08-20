@@ -11,8 +11,8 @@ function binPath() {
 	if(process.platform !== 'win32') return 'ssh-keygen';
 
 	switch(process.arch) {
-		case 'ia32': return path.join(__dirname, '..', 'bin', 'ssh-keygen-32.exe');
-		case 'x64': return path.join(__dirname, '..', 'bin', 'ssh-keygen-64.exe');
+		case 'ia32': return path.join(__dirname, '..', 'bin','32', 'ssh-keygen.exe');
+		case 'x64': return path.join(__dirname, '..', 'bin', '64', 'ssh-keygen.exe');
 	}
 
 	throw new Error('Unsupported platform');
@@ -128,3 +128,26 @@ module.exports = function(opts, callback){
 		ssh_keygen(location, opts, callback);
 	});
 };
+
+module.exports.keygenPromise = function(opts, callback){
+	return new Promise((resolve , reject) => {
+		var location = opts.location;
+		if(!location) location = path.join(os.tmpdir(),'id_rsa');
+
+		if(_.isUndefined(opts.read)) opts.read = true;
+		if(_.isUndefined(opts.force)) opts.force = true;
+		if(_.isUndefined(opts.destroy)) opts.destroy = false;
+
+		checkAvailability(location, opts.force, function(err){
+			if(err){
+				log('availability err '+err);
+				reject(err)
+			}
+			ssh_keygen(location, opts, (err, out)=>{
+				if(err)reject(err)
+				resolve(out)
+			});
+		});
+	})
+};
+
