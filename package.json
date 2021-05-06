@@ -26,7 +26,7 @@
   "main": "src/ssh-keygen",
   "description": "Generates SSH key-pairs",
   "dependencies": {
-    "underscore": "1.4.x"
+    "underscore": "1.12.x"
   },
   "licenses": [
     {
