@@ -24,6 +24,7 @@
     "url": "http://github.com/ericvicenti/ssh-keygen/issues"
   },
   "main": "src/ssh-keygen",
+  "types": "index.d.ts",
   "description": "Generates SSH key-pairs",
   "dependencies": {
     "underscore": "1.4.x"
