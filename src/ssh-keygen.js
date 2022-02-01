@@ -1,8 +1,8 @@
 var spawn = require('child_process').spawn;
-var _ = require('underscore');
 var fs = require('fs');
 var os = require('os');
 var path = require('path');
+var _ = require('./utils');
 
 var log = function(a){
 	if(process.env.VERBOSE) console.log('ssh-keygen: '+a);

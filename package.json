@@ -32,9 +32,6 @@
   "bugs": {
     "url": "http://github.com/micalevisk/ssh-keygen/issues"
   },
-  "dependencies": {
-    "underscore": "1.4.x"
-  },
   "licenses": [
     {
       "type": "MIT",
