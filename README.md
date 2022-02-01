@@ -8,7 +8,7 @@ Generates a SSH key-pair
 2. npm package install
 
 ```
-npm install ssh-keygen
+npm install @micalevisk/ssh-keygen
 ```
 OR download from github and place in ./node_modules
 
