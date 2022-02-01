@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "description": "Generates SSH key-pairs",
   "main": "src/ssh-keygen",
+  "types": "index.d.ts",
+  "type": "commonjs",
   "author": {
     "name": "Eric Vicenti",
     "url": "http://github.com/ericvicenti"
