@@ -30,7 +30,7 @@ interface SshKeygenOptions {
 /**
  * Generates SSH key-pairs.
  */
-export default function keygen(
+declare function keygen(
   opts: Config & SshKeygenOptions,
   callback: (
     errOrMessage?: string | NodeJS.ErrnoException,
@@ -38,3 +38,11 @@ export default function keygen(
   ) => void,
 ): void;
 
+/**
+ * Generates SSH key-pairs.
+ */
+declare function keygen(
+  opts: Config & SshKeygenOptions,
+): Promise<{ key: string; pubKey: string }>;
+
+export default keygen

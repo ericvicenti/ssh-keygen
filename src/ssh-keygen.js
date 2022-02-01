@@ -120,11 +120,21 @@ module.exports = function(opts, callback){
 	if(_.isUndefined(opts.force)) opts.force = true;
 	if(_.isUndefined(opts.destroy)) opts.destroy = false;
 
-	checkAvailability(location, opts.force, function(err){
-		if(err){
-			log('availability err '+err);
-			return callback(err);
-		}
-		ssh_keygen(location, opts, callback);
-	});
+  function run(onSuccess, onError) {
+    checkAvailability(location, opts.force, function(err){
+      if(err){
+        log('availability err '+err);
+        onError(err);
+      } else {
+        ssh_keygen(location, opts, onSuccess);
+      }
+    });
+  }
+
+  if(_.isUndefined(callback)) {
+    var util = require('util');
+    return util.promisify(run)();
+  } else {
+    run(callback, callback);
+  }
 };
