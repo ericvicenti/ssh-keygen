@@ -1,6 +1,6 @@
 {
   "name": "@micalevisk/ssh-keygen",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Generates SSH key-pairs",
   "main": "src/ssh-keygen",
   "types": "index.d.ts",
